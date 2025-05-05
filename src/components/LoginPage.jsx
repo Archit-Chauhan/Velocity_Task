@@ -109,9 +109,23 @@ const Login = () => {
               <div className="flex items-center gap-3">
                 <span>
                   <FaLock />
-                </span>{" "}
+                </span>
                 Register as Vendor
               </div>
+              
+            </div>
+            <div
+              onClick={() => {
+                navigate("/register/admin");
+              }}
+            >
+              <div className="flex items-center gap-3">
+                <span>
+                  <FaLock />
+                </span>
+                Register as Admin
+              </div>
+              
             </div>
             <div className="flex items-center gap-3">
               <span>

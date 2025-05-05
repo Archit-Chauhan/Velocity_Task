@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import {toast} from 'react-toastify'
@@ -139,7 +138,7 @@ const RegisterAdmin = () => {
           </form>
 
           <div className="mt-6 text-center text-sm text-gray-600 space-y-2">
-            <div><i className="fas fa-lock mr-1"></i> Register as Vendor</div>
+            <div onClick={()=>{navigate("/register/vendor");}}><i className="fas fa-lock mr-1"></i> Register as Vendor</div>
             <div><i className="fas fa-lock mr-1"></i> Forgot your password?</div>
           </div>
         </div>
