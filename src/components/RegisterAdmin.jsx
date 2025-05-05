@@ -1,8 +1,13 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import {toast} from 'react-toastify'
+import { useNavigate } from 'react-router-dom';
 
 const RegisterAdmin = () => {
+
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
@@ -12,7 +17,7 @@ const RegisterAdmin = () => {
     phone: ''
   });
 
-  const [message, setMessage] = useState('');
+  // const [message, setMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,7 +28,7 @@ const RegisterAdmin = () => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmpassword) {
-      setMessage('Passwords do not match');
+      toast.error('Passwords do not match');
       return;
     }
 
@@ -39,12 +44,14 @@ const RegisterAdmin = () => {
       const res = await axios.post('https://rfpdemo.velsof.com/api/registeradmin', payload);
 
       if (res.data.response === 'success') {
-        setMessage('Admin registered successfully!');
+        toast.success('Admin registered successfully!');
+        navigate('/');
+
       } else {
-        setMessage('Registration failed: ' + (res.data.error?.[0] || 'Unknown error'));
+        toast.error('Registration failed: ' + (res.data.error?.[0] || 'Unknown error'));
       }
     } catch (err) {
-      setMessage('Error: ' + (err.response?.data?.error?.[0] || 'Something went wrong'));
+      toast.error('Error: ' + (err.response?.data?.error?.[0] || 'Something went wrong'));
     }
   };
 
@@ -129,7 +136,6 @@ const RegisterAdmin = () => {
             >
               Sign Up
             </button>
-            {message && <p className="text-center text-sm text-red-600 mt-2">{message}</p>}
           </form>
 
           <div className="mt-6 text-center text-sm text-gray-600 space-y-2">

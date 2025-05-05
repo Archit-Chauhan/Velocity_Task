@@ -34,7 +34,7 @@ const Vendors = () => {
       const token = localStorage.getItem('token');
       const res = await axios.put(
         "https://rfpdemo.velsof.com/api/rfp/approveVendor",{
-        params :{ "User ID": vendorId, "Status": "approved"},
+        params :{ "user_id": vendorId, "status": "approved"},
         headers: {
           Authorization: `Bearer ${token}`}
       }

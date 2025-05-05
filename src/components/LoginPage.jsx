@@ -42,6 +42,7 @@ const Login = () => {
         console.log("navigate to dashboard");
         }
       } else {
+        console.log(res.data.error);
         toast.error (res.data.error || 'Invalid credentials');
       }
     } catch (err) {
